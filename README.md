@@ -1,3 +1,13 @@
+# StreamU
+
+Aplicacion de StreamU , con multiples plataformas de tu preferencia
+
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+
+## NodeJs
+
+La version de Nodejs es 20.15.0
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
