@@ -9,12 +9,12 @@ sudo ./dnuxt/install
 Up the enviroment selected
 ```bash
 #dnuxt <enviroment> <options>
-dnuxt env up -d
+dnuxt env up -d --build
 ```
 
 Execute command for npm or node
 ```bash
-#dnuxt <npm|node> <options>
-dnuxt env npm install <dependencies>
+#dnuxt <npm|node> <command> <options>
+dnuxt env npm --version
+dnuxt env node --version
 ```
-
