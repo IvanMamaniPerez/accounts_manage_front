@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Script para instalar el comando dnuxt en el sistema
+
+# Verificar si bin.sh es ejecutable
+if [[ ! -x "dnuxt/bin.sh" ]]; then
+    echo "Haciendo ejecutable el script bin.sh..."
+    chmod +x dnuxt/bin.sh
+fi
+
+# Ruta al directorio de scripts
+SCRIPT_DIR="$(pwd)/dnuxt"
+
+# Nombre del enlace simbólico
+LINK_NAME="dnuxt"
+
+# Comprobar si dnuxt ya está en el PATH mediante un enlace simbólico
+if ! command -v $LINK_NAME &> /dev/null; then
+    # Crear un enlace simbólico en /usr/local/bin
+    echo "Creando enlace simbólico en /usr/local/bin para dnuxt..."
+    sudo ln -s "$SCRIPT_DIR/bin.sh" "/usr/local/bin/$LINK_NAME"
+else
+    echo "El comando dnuxt ya está instalado en el sistema."
+fi
+
+echo "El comando dnuxt está listo para usarse. Puedes ejecutar 'dnuxt help' para ver los comandos disponibles."
