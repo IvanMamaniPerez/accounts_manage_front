@@ -1,8 +1,18 @@
 {
     "welcome": "Welcome",
     "access": "Access",
+    "email": "Email",
+    "password": "Password",
+    "remember_me": "Remember me",
+    "forgot_password" : "Forgot password",
+    "login" : "Login",
+    "login_with_google" : "Login with Google",
+    "login_with_facebook" : "Login with Facebook",
+    "or": "or",
+    "register" : "Register",
     "validations":{
-        "email" : "Must be a valid email",
-        "required" : "Required"
+        "email"   : "Must be a valid email",
+        "required": "Required",
+        "min"     : "Must have at least {min} characters"
     }
 }

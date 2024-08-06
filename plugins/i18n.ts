@@ -1,4 +1,7 @@
 import { createI18n } from 'vue-i18n'
+import en from '../lang/en.json'
+import es from '../lang/es.json'
+
 
 export default defineNuxtPlugin(({ vueApp } : any) => {
   const i18n = createI18n({
@@ -6,12 +9,8 @@ export default defineNuxtPlugin(({ vueApp } : any) => {
     globalInjection: true,
     locale: 'es',
     messages: {
-      en: {
-        hello: 'Hello asdfadsf, {name}!'
-      },
-      es: {
-        hello: '¡Hola werwe, {name}!'
-      }
+      en,
+      es
     }
   })
 

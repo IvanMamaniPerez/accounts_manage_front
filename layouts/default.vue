@@ -1,5 +1,6 @@
 <template>
-  <div class="h-screen bg-white dark:bg-gray-600">
+  <div class="bg-white dark:bg-gray-600">
+    <AppHeader />
     <slot />
   </div>
 </template>
@@ -8,6 +9,9 @@
 
 </script>
 
-<style>
 
+<style>
+#__nuxt, #__nuxt > div {
+  min-height: 100vh;
+}
 </style>

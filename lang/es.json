@@ -1,9 +1,18 @@
 {
-    "hello": "Hola {name}",
     "welcome": "Bienvenido",
     "access": "Acceso",
+    "email": "Correo",
+    "password": "Contraseña",
+    "remember_me": "Recordarme",
+    "login": "Iniciar sesión",
+    "forgot_password": "Olvidé mi contraseña",
+    "login_with_google": "Iniciar sesión con Google",
+    "login_with_facebook": "Iniciar sesión con Facebook",
+    "or": "o",
+    "register": "Registrarme",
     "validations":{
-        "email" : "Debe ser un correo válido",
-        "required" : "Requerido"
+        "email"   : "Debe ser un correo válido",
+        "required": "Requerido",
+        "min"     : "Debe tener al menos {min} caracteres"
     }
 }
