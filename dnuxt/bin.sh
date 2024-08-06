@@ -15,6 +15,7 @@ show_help() {
     echo "  up      Inicia los servicios especificados"
     echo "  down    Detiene los servicios especificados"
     echo "  npm     Ejecuta un comando npm dentro del contenedor"
+    echo "  npx     Ejecuta un comando npx dentro del contenedor"
     echo "  node    Ejecuta un comando node dentro del contenedor"
     echo "  help    Muestra esta ayuda"
     echo
@@ -22,6 +23,7 @@ show_help() {
     echo "  dnuxt dev up -d                   # Iniciar servicios de desarrollo"
     echo "  dnuxt prod down                   # Detener servicios de producción"
     echo "  dnuxt staging npm install express # Instalar express en staging"
+    echo "  dnuxt testing npx eslint .        # Ejecutar ESLint en testing"
     echo "  dnuxt testing node script.js      # Ejecutar script.js en testing"
     echo "  dnuxt help                        # Mostrar esta ayuda"
 }
@@ -62,7 +64,7 @@ PROJECT_NAME="dnuxt_${ENVIRONMENT}"
 # Construir el nombre del servicio
 SERVICE_NAME="app-${ENVIRONMENT}"
 
-# Manejar los comandos adicionales como up/down/npm/node
+# Manejar los comandos adicionales como up/down/npm/npx/node
 case $2 in
     up)
         echo "Iniciando entorno $ENVIRONMENT con el proyecto $PROJECT_NAME..."
@@ -81,6 +83,15 @@ case $2 in
         echo "Ejecutando npm ${@:3} en el entorno $ENVIRONMENT con el proyecto $PROJECT_NAME..."
         docker compose -p $PROJECT_NAME -f $COMPOSE_FILE exec $SERVICE_NAME npm "${@:3}"
         ;;
+    npx)
+        # Ejecutar cualquier comando npx dentro del contenedor
+        if [[ $# -lt 3 ]]; then
+            echo "Uso: dnuxt $1 npx <comando>"
+            exit 1
+        fi
+        echo "Ejecutando npx ${@:3} en el entorno $ENVIRONMENT con el proyecto $PROJECT_NAME..."
+        docker compose -p $PROJECT_NAME -f $COMPOSE_FILE exec $SERVICE_NAME npx "${@:3}"
+        ;;
     node)
         # Ejecutar cualquier comando node dentro del contenedor
         if [[ $# -lt 3 ]]; then
@@ -92,7 +103,7 @@ case $2 in
         ;;
     *)
         echo "Comando desconocido: $2"
-        echo "Comandos disponibles: up, down, npm, node, help"
+        echo "Comandos disponibles: up, down, npm, npx, node, help"
         exit 1
         ;;
 esac

@@ -1,0 +1,9 @@
+{
+    "hello": "Hola {name}",
+    "welcome": "Bienvenido",
+    "access": "Acceso",
+    "validations":{
+        "email" : "Debe ser un correo válido",
+        "required" : "Requerido"
+    }
+}

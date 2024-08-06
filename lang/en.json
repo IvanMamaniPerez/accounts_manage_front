@@ -1,0 +1,8 @@
+{
+    "welcome": "Welcome",
+    "access": "Access",
+    "validations":{
+        "email" : "Must be a valid email",
+        "required" : "Required"
+    }
+}
