@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   typeCheck: true,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxtjs/tailwindcss", "@nuxtjs/i18n", "nuxt-auth-sanctum"],
+  modules: ["@nuxt/ui", "@nuxtjs/tailwindcss", "@nuxtjs/i18n", "nuxt-fortify"],
   tailwindcss: {
     config: {
       theme: {
@@ -22,10 +22,27 @@ export default defineNuxtConfig({
       ]
     }
   },
-  sanctum: {
-    baseUrl: 'http://localhost:80', // Laravel API
-    mode: 'cookie',
-  },
+  nuxtFortify: {
+    baseUrl: 'http://localhost:80',
+    origin: 'http://localhost:3000',
+    authMode: 'cookie',
+    authHome: '/',
+    cookieKey: 'XSRF-TOKEN',
+    cookieHeader: 'X-XSRF-TOKEN',
+    endpoints: {
+      csrf: '/sanctum/csrf-cookie',
+      user: '/api/user',
+      login:'/api/login',
+      // other endpoints...
+    },
+    features: {
+        registration: true,
+        resetPasswords: true,
+        twoFactorAuthentication: true,
+      // other features...
+    }
+    // other configurations...
+  }
 })
 
 // SECTION[epic=configuration]: Code added for solution the issue exporting the function

@@ -14,7 +14,7 @@
     "@nuxtjs/i18n": "^8.3.3",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "nuxt": "^3.12.4",
-    "nuxt-auth-sanctum": "^0.4.4",
+    "nuxt-fortify": "^1.1.0",
     "vue": "latest",
     "yup": "^1.4.0"
   },

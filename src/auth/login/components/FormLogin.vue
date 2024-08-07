@@ -1,8 +1,18 @@
 <script setup lang="ts">
+definePageMeta({
+  middleware: ['fortify:guest'],
+})
+
 import { object, string, type InferType } from 'yup'
 import type { FormSubmitEvent } from '#ui/types'
 import { useI18n } from 'vue-i18n'
-const { login } = useSanctumAuth();
+
+interface Credentials {
+  email: string
+  password: string
+}
+
+const { error, login } = useFortifyFeatures()
 
 const { t } = useI18n()
 
@@ -26,16 +36,20 @@ const state = reactive({
   remember: undefined
 })
 
-
-
 // 
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   // Do something with event.data
   const dataForm = event.data;
+  
+  const credentials: Credentials = {
+    email: dataForm.email,
+    password: dataForm.password
+  }
+
   console.log(event.data)
   await login({
-    email: dataForm.email,
+    username: dataForm.email,
     password: dataForm.password
   });
 }
