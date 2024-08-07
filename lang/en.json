@@ -2,6 +2,7 @@
     "welcome": "Welcome",
     "access": "Access",
     "email": "Email",
+    "username": "Username",
     "password": "Password",
     "remember_me": "Remember me",
     "forgot_password" : "Forgot password",
@@ -9,10 +10,13 @@
     "login_with_google" : "Login with Google",
     "login_with_facebook" : "Login with Facebook",
     "or": "or",
+    "sign_up": "Sign up",
     "register" : "Register",
+    "register_account" : "Register account",
     "validations":{
         "email"   : "Must be a valid email",
         "required": "Required",
-        "min"     : "Must have at least {min} characters"
+        "min"     : "Must have at least {min} characters",
+        "email_unique": "Email already in use"
     }
 }

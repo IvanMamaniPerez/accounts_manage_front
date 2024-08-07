@@ -2,6 +2,7 @@
     "welcome": "Bienvenido",
     "access": "Acceso",
     "email": "Correo",
+    "username": "Nombre de usuario",
     "password": "Contraseña",
     "remember_me": "Recordarme",
     "login": "Iniciar sesión",
@@ -9,10 +10,13 @@
     "login_with_google": "Iniciar sesión con Google",
     "login_with_facebook": "Iniciar sesión con Facebook",
     "or": "o",
+    "sign_up": "Registrarse",
     "register": "Registrarme",
+    "register_account": "Registrar cuenta",
     "validations":{
         "email"   : "Debe ser un correo válido",
         "required": "Requerido",
-        "min"     : "Debe tener al menos {min} caracteres"
+        "min"     : "Debe tener al menos {min} caracteres",
+        "email_unique": "El correo ya se encuentra en uso"
     }
 }

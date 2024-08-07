@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   typeCheck: true,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
+  modules: ["@nuxt/ui", "@nuxtjs/tailwindcss", "@nuxtjs/i18n", "nuxt-auth-sanctum"],
   tailwindcss: {
     config: {
       theme: {
@@ -21,6 +21,10 @@ export default defineNuxtConfig({
         './src/**/**.{vue,js,ts,jsx,tsx}',
       ]
     }
+  },
+  sanctum: {
+    baseUrl: 'http://localhost:80', // Laravel API
+    mode: 'cookie',
   },
 })
 
