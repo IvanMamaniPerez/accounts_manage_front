@@ -13,6 +13,7 @@
     "sign_up": "Registrarse",
     "register": "Registrarme",
     "register_account": "Registrar cuenta",
+    "credentials_incorrect": "Las credenciales proporcionadas son incorrectas.",
     "validations":{
         "email"   : "Debe ser un correo válido",
         "required": "Requerido",

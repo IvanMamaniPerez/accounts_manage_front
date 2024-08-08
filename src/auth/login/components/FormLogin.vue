@@ -1,18 +1,13 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: ['fortify:guest'],
+  middleware: ['sanctum:guest'],
 })
 
 import { object, string, type InferType } from 'yup'
 import type { FormSubmitEvent } from '#ui/types'
 import { useI18n } from 'vue-i18n'
-
-interface Credentials {
-  email: string
-  password: string
-}
-
-const { error, login } = useFortifyFeatures()
+import { FetchError } from 'ofetch';
+const { login } = useSanctumAuth();
 
 const { t } = useI18n()
 
@@ -28,6 +23,8 @@ const schema = object({
     .required(txtRequired)
 })
 
+const form = ref()
+let credentialsIncorrect = ref(false);
 type Schema = InferType<typeof schema>
 
 const state = reactive({
@@ -36,22 +33,34 @@ const state = reactive({
   remember: undefined
 })
 
-// 
-
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  // Do something with event.data
   const dataForm = event.data;
-  
-  const credentials: Credentials = {
-    email: dataForm.email,
-    password: dataForm.password
-  }
-
   console.log(event.data)
-  await login({
-    username: dataForm.email,
-    password: dataForm.password
-  });
+
+  try {
+    // await login(userCredentials);
+    await login({
+      email: dataForm.email,
+      password: dataForm.password
+    });
+  } catch (error) {
+
+    console.log("En catch after login", error)
+
+    if (error instanceof FetchError && error.response?.status === 422) {
+      console.log(error.response?._data.errors)
+
+      form.value.setErrors([{
+        path: 'email',
+        message: ' '
+      },
+      {
+        path: 'password',
+        message: ' '
+      }])
+      credentialsIncorrect.value = true;
+    }
+  }
 }
 </script>
 
@@ -62,8 +71,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UCardHeader>
 
     <UCardBody class="space-y-4">
-      <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
-
+      <UForm ref="form" :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
         <UFormGroup :label="$t('email')" name="email">
           <UInput v-model="state.email" icon="i-heroicons-envelope" placeholder="name@example.com" />
         </UFormGroup>
@@ -75,6 +83,9 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         <UFormGroup>
           <UCheckbox :label="$t('remember_me')" color="emerald" v-model="state.remember" />
         </UFormGroup>
+
+        <UAlert v-if="credentialsIncorrect" icon="i-heroicons-exclamation-triangle" color="red" variant="solid" :title="$t('credentials_incorrect')" />
+
 
         <div class="w-full max-w-40 m-auto">
           <UButton color="primary" block type="submit">
@@ -99,7 +110,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           {{ $t('register') }}
         </ULink>
       </div>
-
     </UCardBody>
   </UCard>
 </template>

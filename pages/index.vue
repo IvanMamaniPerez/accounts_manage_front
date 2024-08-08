@@ -5,9 +5,8 @@
 </template>
 <script lang="ts" setup>
 definePageMeta({
-  middleware: ['fortify:auth'],
-})
-
+    middleware: ['sanctum:auth'],
+});
 </script>
 
 <style></style>
