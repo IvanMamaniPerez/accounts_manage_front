@@ -3,7 +3,13 @@ export default defineNuxtConfig({
   typeCheck: true,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxtjs/tailwindcss", "@nuxtjs/i18n", "nuxt-auth-sanctum"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/i18n",
+    "nuxt-auth-sanctum",
+    "nuxt-typed-router"
+  ],
   tailwindcss: {
     config: {
       theme: {
@@ -32,7 +38,6 @@ export default defineNuxtConfig({
     redirect: {
       onLogin: '/',
       onAuthOnly: '/auth/login',
-      onGuestOnly: '/auth/register',
     },
     globalMiddleware: {
       enabled: true,

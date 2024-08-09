@@ -105,7 +105,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         <UButton color="primary" :label="$t('login_with_google')" icon="i-simple-icons-google" block />
         <UButton color="primary" :label="$t('login_with_facebook')" icon="i-simple-icons-facebook" block />
 
-        <ULink to="/auth/forgot-password" class="text-center text-sm text-blue-500 dark:text-white hover:underline">
+        <ULink to="/auth/register" class="text-center text-sm text-blue-500 dark:text-white hover:underline">
           {{ $t('register') }}
         </ULink>
       </div>

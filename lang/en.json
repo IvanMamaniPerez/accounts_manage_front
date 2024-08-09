@@ -9,6 +9,7 @@
     "login" : "Login",
     "login_with_google" : "Login with Google",
     "login_with_facebook" : "Login with Facebook",
+    "confirm_password": "Confirm password",
     "or": "or",
     "sign_up": "Sign up",
     "register" : "Register",
@@ -18,6 +19,7 @@
         "email"   : "Must be a valid email",
         "required": "Required",
         "min"     : "Must have at least {min} characters",
-        "email_unique": "Email already in use"
+        "email_unique": "Email already in use",
+        "password_must_match": "Passwords must match"
     }
 }

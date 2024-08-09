@@ -9,6 +9,7 @@
     "forgot_password": "Olvidé mi contraseña",
     "login_with_google": "Iniciar sesión con Google",
     "login_with_facebook": "Iniciar sesión con Facebook",
+    "confirm_password": "Confirmar contraseña",
     "or": "o",
     "sign_up": "Registrarse",
     "register": "Registrarme",
@@ -18,6 +19,7 @@
         "email"   : "Debe ser un correo válido",
         "required": "Requerido",
         "min"     : "Debe tener al menos {min} caracteres",
-        "email_unique": "El correo ya se encuentra en uso"
+        "email_unique": "El correo ya se encuentra en uso",
+        "password_must_match": "Las contraseñas deben coincidir"
     }
 }
