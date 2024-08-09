@@ -86,7 +86,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
         <UAlert v-if="credentialsIncorrect" icon="i-heroicons-exclamation-triangle" color="red" variant="solid" :title="$t('credentials_incorrect')" />
 
-
         <div class="w-full max-w-40 m-auto">
           <UButton color="primary" block type="submit">
             {{ $t('login') }}

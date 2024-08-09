@@ -25,12 +25,19 @@ export default defineNuxtConfig({
   sanctum: {
     baseUrl: 'http://localhost:80', // Laravel API
     mode: 'token',
+    redirectIfAuthenticated: true,
     endpoints: {
-      login:"/api/login",
+      login: "/api/login",
     },
     redirect: {
       onLogin: '/',
-    }
+      onAuthOnly: '/auth/login',
+      onGuestOnly: '/auth/register',
+    },
+    globalMiddleware: {
+      enabled: true,
+      allow404WithoutAuth: false,
+    },
   },
 })
 

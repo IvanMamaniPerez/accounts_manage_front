@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FormLogin from '~/src/auth/login/components/FormLogin.vue';
+import FormLogin from '~/src/modules/auth/login/components/FormLogin.vue';
 import Logo from '~/components/Logo.vue';
 </script>
 <template>
