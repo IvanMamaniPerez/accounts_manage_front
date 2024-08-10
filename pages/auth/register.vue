@@ -2,7 +2,8 @@
 definePageMeta({
     sanctum: {
         guestOnly: true,
-    }
+    },
+    authorization: false
 });
 
 import FormRegister from '~/src/modules/auth/register/components/FormRegister.vue';

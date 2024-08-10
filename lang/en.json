@@ -15,11 +15,23 @@
     "register" : "Register",
     "register_account" : "Register account",
     "credentials_incorrect": "The provided credentials are incorrect.",
+    "what_you_want_to_do": "What do you want to do?",
+    "buy": "Buy",
+    "sell": "Sell",
+    "sell_description": "Sell quickly and safely, also manage your sales efficiently",
+    "buy_description": "Buy and centralize your information in one place",
     "validations":{
         "email"   : "Must be a valid email",
         "required": "Required",
         "min"     : "Must have at least {min} characters",
         "email_unique": "Email already in use",
         "password_must_match": "Passwords must match"
+    },
+    "register_process":{
+        "success": "User registered successfully",
+        "error": "An error occurred while registering the user",
+        "email_sent": "An email has been sent to your email address to verify your account, please check your inbox",
+        "email_not_sent": "An error occurred while sending the email, please try again later",
+        "email_resend": "Resend email"
     }
 }

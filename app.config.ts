@@ -25,4 +25,27 @@ export default defineAppConfig({
             }
         },
     },
+    authorization: {
+        redirect: {
+            onForbiden: '/auth/forbiden',
+            onLoginExpired: '/auth/login',
+            status_register: {
+                select_activity: '/auth/select-activity',
+                validate_email: '/auth/validate-email',
+            },
+            role: {
+                admin: '/admin',
+                user: '/client',
+                seller: '/seller',
+            }
+        },
+        status_register: {
+            order: [
+                'basic_register',
+                'select_activity',
+                'validate_email',
+                'complete_register',
+            ],
+        }
+    }
 })

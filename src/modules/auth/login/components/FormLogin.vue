@@ -38,7 +38,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   console.log(event.data)
 
   try {
-    // await login(userCredentials);
     await login({
       email: dataForm.email,
       password: dataForm.password
@@ -93,7 +92,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </div>
 
         <div class="text-center">
-          <ULink to="/auth/forgot-password" class="text-sm text-blue-500 dark:text-white hover:underline">
+          <ULink to="/auth/forgot-password" class="text-sm text-black dark:text-white hover:underline">
             {{ $t('forgot_password') }}
           </ULink>
         </div>
@@ -105,7 +104,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         <UButton color="primary" :label="$t('login_with_google')" icon="i-simple-icons-google" block />
         <UButton color="primary" :label="$t('login_with_facebook')" icon="i-simple-icons-facebook" block />
 
-        <ULink to="/auth/register" class="text-center text-sm text-blue-500 dark:text-white hover:underline">
+        <ULink to="/auth/register" class="text-center text-sm text-black dark:text-white hover:underline">
           {{ $t('register') }}
         </ULink>
       </div>
