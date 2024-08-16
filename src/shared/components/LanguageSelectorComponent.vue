@@ -10,8 +10,8 @@ const isSelected = (lang: string) => computed(() => locale.value === lang);
 
 <template>
     <UButtonGroup>
-      <UButton label="ES" color="primary" :disabled="isSelected('es').value" v-on:click="setLocale('es')" />
-      <UButton label="EN" color="primary" :disabled="isSelected('en').value" v-on:click="setLocale('en')" />
+      <UButton label="ES" color="secondary" :disabled="isSelected('es').value" v-on:click="setLocale('es')" />
+      <UButton label="EN" color="secondary" :disabled="isSelected('en').value" v-on:click="setLocale('en')" />
   </UButtonGroup>
 </template>
 <style>

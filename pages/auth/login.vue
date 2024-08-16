@@ -5,7 +5,7 @@ definePageMeta({
 });
 </script>
 <template>
-    <div class="flex justify-center items-center p-5 md:p-10 flex-col gap-4">
+    <div class="flex justify-center items-center p-5 md:p-10 flex-col gap-4 min-h-full">
         <Logo />
         <FormLogin />
     </div>

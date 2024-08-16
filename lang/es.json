@@ -1,6 +1,8 @@
 {
     "welcome": "Bienvenido",
-    "access": "Acceso",
+    "hello": "Hola! {name}",
+    "access": "Inicia sesión en tu cuenta",
+    "logout": "Cerrar sesión",
     "email": "Correo",
     "username": "Nombre de usuario",
     "password": "Contraseña",
@@ -10,16 +12,19 @@
     "login_with_google": "Iniciar sesión con Google",
     "login_with_facebook": "Iniciar sesión con Facebook",
     "confirm_password": "Confirmar contraseña",
-    "or": "o",
+    "or": "o continua con",
     "sign_up": "Registrarse",
     "register": "Registrarme",
+    "register_here" : "Registrate aquí",
     "register_account": "Registrar cuenta",
     "credentials_incorrect": "Las credenciales proporcionadas son incorrectas.",
     "what_you_want_to_do": "¿Qué deseas hacer?",
     "buy": "Comprar",
     "sell": "Vender",
-    "sell_description": "Vende de manera rápida y segura, ademas gestiona tus información de manera eficiente",
+    "sell_description": "Vende de manera rápida y segura, ademas gestiona tus información de manera estratégica",
     "buy_description": "Compra y centraliza tu informacion en un solo lugar",
+    "updating": "Actualizando",
+    "opps" : "Ups, algo salió mal",
     "validations":{
         "email"   : "Debe ser un correo válido",
         "required": "Requerido",
@@ -28,10 +33,14 @@
         "password_must_match": "Las contraseñas deben coincidir"
     },
     "register_process":{
+        "no_account": "No tienes una cuenta?",
         "success": "Usuario registrado exitosamente",
         "error": "Ocurrió un error al registrar el usuario",
-        "email_sent": "Se ha enviado un correo a tu dirección de correo para verificar tu cuenta, por favor revisa tu bandeja de entrada",
+        "check_inbox": "Revisa tu correo",
+        "email_sent": "Se ha enviado un correo a tu dirección de correo ",
         "email_not_sent": "Ocurrió un error al enviar el correo, por favor intenta de nuevo más tarde",
-        "email_resend": "Reenviar correo"
+        "email_resend": "Reenvia el correo",
+        "email_not_found": "¿No ves el correo? Por favor revisa la carpeta de spam o",
+        "email_can_resent": "Prodas reenviar nuevamente en: "
     }
 }

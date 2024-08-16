@@ -1,25 +1,30 @@
 {
     "welcome": "Welcome",
-    "access": "Access",
+    "hello": "Hello! {name}",
+    "access": "Sign in to your account",
+    "logout": "Logout",
     "email": "Email",
     "username": "Username",
     "password": "Password",
     "remember_me": "Remember me",
     "forgot_password" : "Forgot password",
-    "login" : "Login",
+    "login" : "Sign in",
     "login_with_google" : "Login with Google",
     "login_with_facebook" : "Login with Facebook",
     "confirm_password": "Confirm password",
-    "or": "or",
+    "or": "or continue with",
     "sign_up": "Sign up",
     "register" : "Register",
+    "register_here" : "Register here",
     "register_account" : "Register account",
     "credentials_incorrect": "The provided credentials are incorrect.",
     "what_you_want_to_do": "What do you want to do?",
     "buy": "Buy",
     "sell": "Sell",
-    "sell_description": "Sell quickly and safely, also manage your sales efficiently",
+    "sell_description": "Sell quickly and safely, also manage your sales information strategically",
     "buy_description": "Buy and centralize your information in one place",
+    "updating": "Updating",
+    "opps": "Opps, something went wrong",
     "validations":{
         "email"   : "Must be a valid email",
         "required": "Required",
@@ -28,10 +33,13 @@
         "password_must_match": "Passwords must match"
     },
     "register_process":{
+        "no_account": "Don't have an account?",
         "success": "User registered successfully",
         "error": "An error occurred while registering the user",
-        "email_sent": "An email has been sent to your email address to verify your account, please check your inbox",
+        "check_inbox": "Check your email",
+        "email_sent": "An email has been sent to your email address to ",
         "email_not_sent": "An error occurred while sending the email, please try again later",
-        "email_resend": "Resend email"
+        "email_resend": "Resend email",
+        "email_not_found": "Can't see the email? Please check the spam folder or"
     }
 }

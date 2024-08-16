@@ -64,7 +64,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <UCard class="ring-0 shadow-2xl max-w-lg w-full">
+  <UCard class="ring-0 shadow-none max-w-lg w-full dark:bg-gray-900">
     <UCardHeader>
       <h2 class="text-xl font-semibold text-center">{{ $t('access') }}</h2>
     </UCardHeader>
@@ -80,7 +80,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </UFormGroup>
 
         <UFormGroup>
-          <UCheckbox :label="$t('remember_me')" color="emerald" v-model="state.remember" />
+          <UCheckbox :label="$t('remember_me')" color="indigo" v-model="state.remember" />
         </UFormGroup>
 
         <UAlert v-if="credentialsIncorrect" icon="i-heroicons-exclamation-triangle" color="red" variant="solid" :title="$t('credentials_incorrect')" />
@@ -92,7 +92,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </div>
 
         <div class="text-center">
-          <ULink to="/auth/forgot-password" class="text-sm text-black dark:text-white hover:underline">
+          <ULink to="/auth/forgot-password" class="text-sm text-black dark:text-indigo-500 dark:hover:text-indigo-400">
             {{ $t('forgot_password') }}
           </ULink>
         </div>
@@ -101,12 +101,16 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       <UDivider :label="$t('or').toUpperCase()" size="md" />
 
       <div class="space-y-4 flex flex-col justify-center w-full">
-        <UButton color="primary" :label="$t('login_with_google')" icon="i-simple-icons-google" block />
-        <UButton color="primary" :label="$t('login_with_facebook')" icon="i-simple-icons-facebook" block />
+        <UButton color="secondary" :label="$t('login_with_google')" icon="i-simple-icons-google" block />
+        <UButton color="secondary" :label="$t('login_with_facebook')" icon="i-simple-icons-facebook" block />
 
-        <ULink to="/auth/register" class="text-center text-sm text-black dark:text-white hover:underline">
-          {{ $t('register') }}
+        <div class="text-center text-sm text-black dark:text-white">
+          {{ $t('register_process.no_account') }}
+          <ULink to="/auth/register" class="text-center text-sm text-black dark:text-indigo-500 dark:hover:text-indigo-400">
+          {{ $t('register_here') }}
         </ULink>
+        </div>
+        
       </div>
     </UCardBody>
   </UCard>

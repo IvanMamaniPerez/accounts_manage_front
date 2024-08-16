@@ -1,4 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import type { FetchContext } from 'ofetch'
+import type { ConsolaInstance } from 'consola'
+import type { NuxtApp } from '#app'
+
 export default defineNuxtConfig({
   typeCheck: true,
   compatibilityDate: '2024-04-03',
@@ -34,6 +38,7 @@ export default defineNuxtConfig({
     redirectIfAuthenticated: true,
     endpoints: {
       login: "/api/login",
+      logout: '/api/logout',
     },
     redirect: {
       onLogin: '/',

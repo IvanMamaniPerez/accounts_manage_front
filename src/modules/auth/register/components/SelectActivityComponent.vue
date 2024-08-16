@@ -1,13 +1,17 @@
 <template>
-  <div class="min-h-[80vh] flex flex-col gap-10 px-10 xl:px-70 justify-center">
-    <h1 class="text-3xl md:text-5xl text-center w-full">{{ $t('what_you_want_to_do') }}</h1>
-    <div class="grid gap-8 w-full justify-center grid-cols-1 md:grid-cols-2 justify-items-center">
+  <div class="min-h-[80vh] flex flex-col px-10 justify-center">
+    <h1 class="text-3xl md:text-3xl text-center w-full mb-10">{{ $t('hello', { name: user?.name }) + ' ' +
+      $t('what_you_want_to_do') }}</h1>
+    <div
+      class="grid gap-5 gap-x-10 w-full justify-center grid-cols-1 md:grid-cols-2 justify-items-center max-w-3xl mx-auto">
       <template v-for="activity in activitiesData">
-        <UButton color="primary" v-on:click="sendActivity(activity.slug)" class="dark:ring-none w-60 lg:w-96 hover:bg-white">
-          <UCard class="bg-slate-600 text-white dark:bg-white dark:text-black dark:border-none ring-none dark:ring-none w-full">
-            <UIcon :name="activity.icon" class="w-20 h-20" />
-            <h1 class="text-xl">{{ activity.name }}</h1>
-            <p>{{ activity.description }}</p>
+        <UButton color="secondary" v-on:click="sendActivity(activity.slug)"
+          class="dark:ring-none w-60 p-0 lg:w-96 bg-white hover:bg-blue-200 dark:hover:bg-gray-800">
+          <UCard
+            class="h-full text-white  hover:bg-blue-200 dark:bg-gray-700 shadow-none dark:text-black ring-0  dark:hover:bg-gray-800">
+            <UIcon :name="activity.icon" class="w-20 h-20 text-black dark:text-white" />
+            <h1 class="text-xl text-black dark:text-white">{{ activity.name }}</h1>
+            <p class="text-black dark:text-white">{{ activity.description }}</p>
           </UCard>
         </UButton>
       </template>
@@ -17,8 +21,21 @@
 
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
+import type { UserInterface } from '~/src/shared/interfaces/UserInterface';
+import { useAppConfig } from '#app';
+import type { AuthorizationConfig } from '../interfaces/AuthorizationInterfaces';
+import { getNextStepByStatusRegister } from '../utils/validations';
+import { ConfigToast } from '~/src/shared/utils/ToastContigurations';
+import { getConfigToast } from '~/src/shared/utils/ToastContigurations';
+
+const authorizationConfig = (useAppConfig().authorization ?? {}) as AuthorizationConfig;
+const { refreshIdentity } = useSanctumAuth();
 const { t } = useI18n()
-const activitiesData = [
+const toast = useToast();
+const client = useSanctumClient();
+const user = useSanctumUser<UserInterface>();
+
+const activitiesData = computed(() => [
   {
     slug: 'client',
     name: t('buy'),
@@ -31,10 +48,49 @@ const activitiesData = [
     description: t('sell_description'),
     icon: 'i-heroicons-building-storefront',
   }
-]
+])
 
-const sendActivity = (activity: string) => {
-  console.log(activity)
+const configLoader = getConfigToast(ConfigToast.loader, {
+  id: 'register:activity',
+  title: t('updating'),
+});
+
+const configError = getConfigToast(ConfigToast.error, {
+  id: 'register:activity:error',
+  title: t('oops'),
+});
+
+async function sendActivity(activity: string) {
+
+  toast.add(configLoader);
+
+  const { data: data, status } = await useAsyncData('register:activity', async () => {
+    const response = client('/api/register/activity', {
+      method: 'PUT',
+      body: JSON.stringify({ slug: activity }),
+    })
+    return response
+  })
+
+  toast.remove(configLoader.id);
+
+  if (status.value === 'success') {
+
+    await refreshIdentity();
+
+    const userUpdated = useSanctumUser<UserInterface>();
+    if (!userUpdated.value) {
+      return navigateTo('/auth/login');
+    }
+
+    const nextStep = getNextStepByStatusRegister(userUpdated.value.status_register, authorizationConfig);
+
+    return navigateTo(nextStep);
+  } else if (status.value === 'error') {
+    toast.add(configError);
+    // TODO[epic=monitoring]: Add monitoring for this error send to backend for monitoring, 
+    // proably a interceptor global when the errors are catched
+  }
 }
 </script>
 
