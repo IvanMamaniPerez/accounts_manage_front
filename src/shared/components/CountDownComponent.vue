@@ -1,6 +1,6 @@
 <template>
   <div class="inline-block">
-    <span class="text-blue-500 dark:text-indigo-500" v-text="stringTimer"></span>
+    <span class="text-cyan-700 " v-text="stringTimer"></span>
   </div>
 </template>
 

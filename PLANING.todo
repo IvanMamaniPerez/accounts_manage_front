@@ -1,0 +1,28 @@
+project:
+    ☐ Make tests for structure and components
+    ☐ Make tests for logic
+    ☐ Make tests for API
+    ☐ Make tests for UI
+    ☐ Make tests for UX
+    ☐ Make tests for performance
+    ☐ Make tests for security
+    ☐ Make tests for accesiblity
+    ☐ Make tests for SEO
+    ☐ Make tests for PWA
+    ☐ Make tests for i18n
+    ☐ Make tests for e2e
+    ☐ Make tests for CI/CD
+    ☐ Make tests for documentation
+    ☐ Make tests for code quality
+    ☐ Make tests for code coverage
+    ☐ Make tests for code complexity
+    ☐ Make tests for code duplication
+    ☐ Make tests for code maintainability
+    ☐ Make tests for code readability
+    ☐ Make tests for code consistency
+    ☐ Make tests for code performance
+    ☐ Make tests for code security
+    ☐ Make tests for code accesibility
+    ☐ Make tests for code SEO
+    ☐ Make tests for code PWA
+    ☐ Make tests for files translate, consistency, performance, security, accesibility, SEO, PWA

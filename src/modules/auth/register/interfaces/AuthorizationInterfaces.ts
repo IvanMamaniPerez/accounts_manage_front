@@ -9,6 +9,7 @@ interface AuthorizationConfig {
     redirect: {
         onForbiden: string;
         onLoginExpired: string;
+        onValidateEmail: string;
         status_register: {
             [key : string]: string;
         };

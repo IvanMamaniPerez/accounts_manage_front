@@ -5,7 +5,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-
+definePageMeta({
+  authorization: {
+    validateRoles: false,
+  },
+  middleware: ["redirect-home"]
+});
 </script>
 
 <style></style>

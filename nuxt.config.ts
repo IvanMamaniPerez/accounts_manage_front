@@ -1,12 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import type { FetchContext } from 'ofetch'
-import type { ConsolaInstance } from 'consola'
-import type { NuxtApp } from '#app'
-
 export default defineNuxtConfig({
   typeCheck: true,
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true
+    }
+  },
   modules: [
     "@nuxt/ui",
     "@nuxtjs/tailwindcss",
@@ -37,8 +39,8 @@ export default defineNuxtConfig({
     mode: 'token',
     redirectIfAuthenticated: true,
     endpoints: {
-      login: "/api/login",
-      logout: '/api/logout',
+      login: "/api/auth/login",
+      logout: '/api/auth/logout',
     },
     redirect: {
       onLogin: '/',

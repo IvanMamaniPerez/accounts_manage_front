@@ -15,7 +15,7 @@
     "or": "o continua con",
     "sign_up": "Registrarse",
     "register": "Registrarme",
-    "register_here" : "Registrate aquí",
+    "register_here": "Registrate aquí",
     "register_account": "Registrar cuenta",
     "credentials_incorrect": "Las credenciales proporcionadas son incorrectas.",
     "what_you_want_to_do": "¿Qué deseas hacer?",
@@ -24,15 +24,18 @@
     "sell_description": "Vende de manera rápida y segura, ademas gestiona tus información de manera estratégica",
     "buy_description": "Compra y centraliza tu informacion en un solo lugar",
     "updating": "Actualizando",
-    "opps" : "Ups, algo salió mal",
-    "validations":{
-        "email"   : "Debe ser un correo válido",
+    "opps": "Ups, algo salió mal",
+    "validations": {
+        "email": "Debe ser un correo válido",
         "required": "Requerido",
-        "min"     : "Debe tener al menos {min} caracteres",
+        "min": "Debe tener al menos {min} caracteres",
         "email_unique": "El correo ya se encuentra en uso",
-        "password_must_match": "Las contraseñas deben coincidir"
+        "password_must_match": "Las contraseñas deben coincidir",
+        "the_email_has_already_been_taken": "El correo ya se encuentra en uso.",
+        "the_password_field_confirmation_does_not_match" : "El campo de confirmación de contraseña no coincide."
     },
-    "register_process":{
+    "register_process": {
+        "registering": "Registrando",
         "no_account": "No tienes una cuenta?",
         "success": "Usuario registrado exitosamente",
         "error": "Ocurrió un error al registrar el usuario",
@@ -40,7 +43,12 @@
         "email_sent": "Se ha enviado un correo a tu dirección de correo ",
         "email_not_sent": "Ocurrió un error al enviar el correo, por favor intenta de nuevo más tarde",
         "email_resend": "Reenvia el correo",
+        "email_sending": "Enviando correo",
         "email_not_found": "¿No ves el correo? Por favor revisa la carpeta de spam o",
-        "email_can_resent": "Prodas reenviar nuevamente en: "
+        "email_sent_success": "Correo enviado exitosamente",
+        "email_can_resent": "Prodas reenviar nuevamente en: ",
+        "email_we_are_verifying": "Estamos verificando tu dirección de correo",
+        "email_already_verified": "Correo ya verificado",
+        "email_verifed_success": "Correo verificado exitosamente"
     }
 }

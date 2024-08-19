@@ -5,7 +5,6 @@ definePageMeta({
 
 import { object, string, type InferType } from 'yup'
 import type { FormSubmitEvent } from '#ui/types'
-import { useI18n } from 'vue-i18n'
 import { FetchError } from 'ofetch';
 const { login } = useSanctumAuth();
 
@@ -34,17 +33,15 @@ const state = reactive({
 })
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  const dataForm = event.data;
-  console.log(event.data)
 
+  const dataForm = event.data;
+  
   try {
     await login({
       email: dataForm.email,
       password: dataForm.password
     });
   } catch (error) {
-
-    console.log("En catch after login", error)
 
     if (error instanceof FetchError && error.response?.status === 422) {
       console.log(error.response?._data.errors)
@@ -80,7 +77,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </UFormGroup>
 
         <UFormGroup>
-          <UCheckbox :label="$t('remember_me')" color="indigo" v-model="state.remember" />
+          <UCheckbox :label="$t('remember_me')" color="cyan" v-model="state.remember" />
         </UFormGroup>
 
         <UAlert v-if="credentialsIncorrect" icon="i-heroicons-exclamation-triangle" color="red" variant="solid" :title="$t('credentials_incorrect')" />
@@ -92,7 +89,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </div>
 
         <div class="text-center">
-          <ULink to="/auth/forgot-password" class="text-sm text-black dark:text-indigo-500 dark:hover:text-indigo-400">
+          <ULink to="/auth/forgot-password" class="text-sm text-black dark:text-cyan-700 dark:hover:text-cyan-400">
             {{ $t('forgot_password') }}
           </ULink>
         </div>
@@ -106,7 +103,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
         <div class="text-center text-sm text-black dark:text-white">
           {{ $t('register_process.no_account') }}
-          <ULink to="/auth/register" class="text-center text-sm text-black dark:text-indigo-500 dark:hover:text-indigo-400">
+          <ULink to="/auth/register" class="text-center text-sm text-black dark:text-cyan-700 dark:hover:text-cyan-400">
           {{ $t('register_here') }}
         </ULink>
         </div>

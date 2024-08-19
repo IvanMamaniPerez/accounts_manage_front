@@ -6,9 +6,9 @@
       class="grid gap-5 gap-x-10 w-full justify-center grid-cols-1 md:grid-cols-2 justify-items-center max-w-3xl mx-auto">
       <template v-for="activity in activitiesData">
         <UButton color="secondary" v-on:click="sendActivity(activity.slug)"
-          class="dark:ring-none w-60 p-0 lg:w-96 bg-white hover:bg-blue-200 dark:hover:bg-gray-800">
+          class="dark:ring-none w-60 p-0 lg:w-96 bg-white hover:bg-cyan-200 dark:hover:bg-gray-800">
           <UCard
-            class="h-full text-white  hover:bg-blue-200 dark:bg-gray-700 shadow-none dark:text-black ring-0  dark:hover:bg-gray-800">
+            class="h-full text-white  hover:bg-cyan-200 dark:bg-gray-700 shadow-none dark:text-black ring-0  dark:hover:bg-gray-800">
             <UIcon :name="activity.icon" class="w-20 h-20 text-black dark:text-white" />
             <h1 class="text-xl text-black dark:text-white">{{ activity.name }}</h1>
             <p class="text-black dark:text-white">{{ activity.description }}</p>
@@ -20,18 +20,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
 import type { UserInterface } from '~/src/shared/interfaces/UserInterface';
-import { useAppConfig } from '#app';
-import type { AuthorizationConfig } from '../interfaces/AuthorizationInterfaces';
-import { getNextStepByStatusRegister } from '../utils/validations';
-import { ConfigToast } from '~/src/shared/utils/ToastContigurations';
-import { getConfigToast } from '~/src/shared/utils/ToastContigurations';
+import { useToastComposable } from '~/src/shared/composables/ToastComposable';
+const { showLoaderToast, showErrorToast, removeToast } = useToastComposable()
 
-const authorizationConfig = (useAppConfig().authorization ?? {}) as AuthorizationConfig;
 const { refreshIdentity } = useSanctumAuth();
 const { t } = useI18n()
-const toast = useToast();
 const client = useSanctumClient();
 const user = useSanctumUser<UserInterface>();
 
@@ -50,44 +44,43 @@ const activitiesData = computed(() => [
   }
 ])
 
-const configLoader = getConfigToast(ConfigToast.loader, {
-  id: 'register:activity',
-  title: t('updating'),
-});
-
-const configError = getConfigToast(ConfigToast.error, {
-  id: 'register:activity:error',
-  title: t('oops'),
-});
-
 async function sendActivity(activity: string) {
 
-  toast.add(configLoader);
+  showLoaderToast({
+    id: 'register:activity',
+    title: t('updating'),
+  })
 
   const { data: data, status } = await useAsyncData('register:activity', async () => {
-    const response = client('/api/register/activity', {
+
+    const response = client('/api/auth/register/activity', {
       method: 'PUT',
       body: JSON.stringify({ slug: activity }),
     })
+
     return response
   })
 
-  toast.remove(configLoader.id);
+  removeToast('register:activity');
 
   if (status.value === 'success') {
 
     await refreshIdentity();
 
     const userUpdated = useSanctumUser<UserInterface>();
+    console.log('userUpdated', userUpdated.value);
     if (!userUpdated.value) {
       return navigateTo('/auth/login');
     }
 
-    const nextStep = getNextStepByStatusRegister(userUpdated.value.status_register, authorizationConfig);
+    return navigateTo('/', { replace: true });
 
-    return navigateTo(nextStep);
   } else if (status.value === 'error') {
-    toast.add(configError);
+
+    showErrorToast({
+      id: 'register:activity:error',
+      title: t('opps'),
+    })
     // TODO[epic=monitoring]: Add monitoring for this error send to backend for monitoring, 
     // proably a interceptor global when the errors are catched
   }

@@ -7,16 +7,16 @@
     "username": "Username",
     "password": "Password",
     "remember_me": "Remember me",
-    "forgot_password" : "Forgot password",
-    "login" : "Sign in",
-    "login_with_google" : "Login with Google",
-    "login_with_facebook" : "Login with Facebook",
+    "forgot_password": "Forgot password",
+    "login": "Sign in",
+    "login_with_google": "Login with Google",
+    "login_with_facebook": "Login with Facebook",
     "confirm_password": "Confirm password",
     "or": "or continue with",
     "sign_up": "Sign up",
-    "register" : "Register",
-    "register_here" : "Register here",
-    "register_account" : "Register account",
+    "register": "Register",
+    "register_here": "Register here",
+    "register_account": "Register account",
     "credentials_incorrect": "The provided credentials are incorrect.",
     "what_you_want_to_do": "What do you want to do?",
     "buy": "Buy",
@@ -25,14 +25,17 @@
     "buy_description": "Buy and centralize your information in one place",
     "updating": "Updating",
     "opps": "Opps, something went wrong",
-    "validations":{
-        "email"   : "Must be a valid email",
+    "validations": {
+        "email": "Must be a valid email",
         "required": "Required",
-        "min"     : "Must have at least {min} characters",
+        "min": "Must have at least {min} characters",
         "email_unique": "Email already in use",
-        "password_must_match": "Passwords must match"
+        "password_must_match": "Passwords must match",
+        "the_email_has_already_been_taken": "The email has already been taken.",
+        "the_password_field_confirmation_does_not_match" : "The password field confirmation does not match."
     },
-    "register_process":{
+    "register_process": {
+        "registering": "Registering",
         "no_account": "Don't have an account?",
         "success": "User registered successfully",
         "error": "An error occurred while registering the user",
@@ -40,6 +43,12 @@
         "email_sent": "An email has been sent to your email address to ",
         "email_not_sent": "An error occurred while sending the email, please try again later",
         "email_resend": "Resend email",
-        "email_not_found": "Can't see the email? Please check the spam folder or"
+        "email_sending": "Sending email",
+        "email_not_found": "Can't see the email? Please check the spam folder or",
+        "email_sent_success": "Email sent successfully",
+        "email_can_resent": "You can resend again in: ",
+        "email_we_are_verifying": "We are verifying your email address",
+        "email_already_verified": "Email already verified",
+        "email_verifed_success": "Email verified successfully"
     }
 }

@@ -31,4 +31,8 @@ function getNextStepByStatusRegister(
   return status[index + 1];
 }
 
-export { areValidRoles, areValidStatusRegister, hasValidRole, getNextStepByStatusRegister };
+function getRoutePrincipalByRole(role: string, configurationAuthorization: AuthorizationConfig): string {
+  return configurationAuthorization.redirect.role[role];
+}
+
+export { areValidRoles, areValidStatusRegister, hasValidRole, getNextStepByStatusRegister,getRoutePrincipalByRole };

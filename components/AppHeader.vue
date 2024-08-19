@@ -2,6 +2,8 @@
 import LanguageSelectorComponent from '~/src/shared/components/LanguageSelectorComponent.vue';
 import ColorModeComponent from '~/src/shared/components/ColorModeComponent.vue';
 import LogoutComponent from '~/src/shared/components/LogoutComponent.vue';
+
+const { isAuthenticated } = useSanctumAuth();
 </script>
 
 <template>
@@ -9,7 +11,7 @@ import LogoutComponent from '~/src/shared/components/LogoutComponent.vue';
     <div class="flex justify-end items-center py-4 gap-4">
         <ColorModeComponent />
         <LanguageSelectorComponent />
-        <LogoutComponent />
+        <LogoutComponent v-if="isAuthenticated" />
     </div>
   </header>
 </template>
